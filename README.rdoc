@@ -1,0 +1,12 @@
+ER diagram:
+
+-------------------
+|url              |               -----------   
+-------------------              | url_ip   |
+|id               |               -----------    
+|long_url         | (1..n)       |id        |
+|short_partial_url|------------->|url_id    |
+|clicks           |              |ip_address|   
+|created_at       |              ------------      
+|updated_at       |
+-------------------

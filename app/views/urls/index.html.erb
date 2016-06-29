@@ -1,0 +1,29 @@
+<h1>URL Shortner</h1>
+
+<%= form_for @url do |f| %>
+<p>
+  <%= f.label :long_url %><br>
+  <%= f.text_field :long_url %><br>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Long URL</th>
+      <th>Short URL</th>
+      <th>Clicks</th>
+    </tr>
+  </thead>
+  <% @urls.each do |url| %>
+  <% @short_url = "#{request.protocol}#{request.host_with_port}/#{url.short_partial_url}" %>
+  <tr>
+    <td><%= link_to url.long_url, url.long_url %></td>
+    <td><%= link_to @short_url, @short_url %></td>
+    <td><%= url.clicks %></td>
+  </tr>
+<% end %>
+</table>
